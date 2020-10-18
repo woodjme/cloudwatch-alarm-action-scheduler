@@ -1,0 +1,36 @@
+service: cloudwatch-alarm-scheduler
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${file(./config/${self:custom.stage}.yml):region}
+  timeout: 300
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - cloudwatch:DisableAlarmActions
+        - cloudwatch:EnableAlarmActions
+      Resource: "*"
+
+functions:
+  disableHandler:
+    handler: src/disable.handler
+    events:
+      - schedule:
+          rate: ${file(./config/${self:custom.stage}.yml):disableSchedule}
+          enabled: true
+          input:
+            alarmNames: ${file(./config/${self:custom.stage}.yml):alarmNames}
+
+  enableHandler:
+    handler: src/enable.handler
+    events:
+      - schedule:
+          rate: ${file(./config/${self:custom.stage}.yml):enableSchedule}
+          enabled: true
+          input:
+            alarmNames: ${file(./config/${self:custom.stage}.yml):alarmNames}
+
+custom:
+  stage: ${opt:stage, self:provider.stage}

@@ -1,0 +1,6 @@
+region: eu-west-1
+disableSchedule: cron(0 20 * * ? *) # Disable at 8pm every night
+enableSchedule: cron(0 9 ? * MON-FRI *) # Enable at 9am every weekday
+alarmNames:
+  - MyFirstAlarmName
+  - MySecondAlarmName
