@@ -4,7 +4,7 @@ A simple set of lambda functions that run on a CRON expression to disable and en
 
 ## Why
 
-Initially, I wrote this to avoid [Alarm Fatigue](https://www.google.com/search?client=safari&rls=en&q=Alert+Fatigue&ie=UTF-8&oe=UTF-8) such that non-critical alarms would not alert people in non-working hours.
+Initially, I wrote this to avoid [Alarm Fatigue](https://en.wikipedia.org/wiki/Alarm_fatigue) such that non-critical alarms would not alert people in non-working hours.
 
 ## Usage
 
