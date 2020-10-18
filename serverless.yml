@@ -1,5 +1,4 @@
-service: cloudwatch-alarm-scheduler
-
+service: cloudwatch-alarm-action-scheduler
 provider:
   name: aws
   runtime: nodejs12.x
